@@ -1,7 +1,17 @@
+import FileUpload from './Components/FileUpload';
+import WorkoutList from './Components/WorkoutList';
 import './App.css';
 
-function App() {
-  return <></>;
-}
+const App = () => {
+  return (
+    <>
+      <div>
+        <h1>Gym Workout Tracker</h1>
+        <FileUpload />
+        <WorkoutList />
+      </div>
+    </>
+  );
+};
 
 export default App;
