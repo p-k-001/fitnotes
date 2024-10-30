@@ -28,6 +28,7 @@ const WorkoutList = () => {
           <th>Exercise</th>
           <th>Category</th>
           <th>Weight</th>
+          <th>Weight Unit</th>
           <th>Reps</th>
           {/* Add other columns as necessary */}
         </tr>
@@ -39,6 +40,7 @@ const WorkoutList = () => {
             <td>{workout.exercise}</td>
             <td>{workout.category}</td>
             <td>{workout.weight}</td>
+            <td>{workout.weight_unit}</td>
             <td>{workout.reps}</td>
             {/* Add other data fields */}
           </tr>

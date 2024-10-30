@@ -53,17 +53,17 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
         // Insert data into SQLite
         workouts.forEach((workout) => {
-          //   console.log(workout);
+          console.log(workout);
           const {
-            Date,
-            Exercise,
-            Category,
-            Weight,
-            Weight_Unit,
-            Reps,
-            Distance,
-            Distance_Unit,
-            Time,
+            Date: date,
+            Exercise: exercise,
+            Category: category,
+            Weight: weight,
+            'Weight Unit': weight_unit,
+            Reps: reps,
+            Distance: distance,
+            'Distance Unit': distance_unit,
+            Time: time,
           } = workout;
 
           db.run(
@@ -71,15 +71,15 @@ app.post('/upload', upload.single('file'), (req, res) => {
                         INSERT INTO workouts (date, exercise, category, weight, weight_unit, reps, distance, distance_unit, time)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
-              Date,
-              Exercise,
-              Category,
-              Weight,
-              Weight_Unit,
-              Reps,
-              Distance,
-              Distance_Unit,
-              Time,
+              date,
+              exercise,
+              category,
+              weight,
+              weight_unit,
+              reps,
+              distance,
+              distance_unit,
+              time,
             ]
           );
         });
@@ -87,7 +87,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
         res.json({ message: 'File uploaded and data stored' });
       },
     });
-    console.log('🚀 ~ fs.readFile ~ data:', data);
+    // console.log('🚀 ~ fs.readFile ~ data:', data);
   });
 });
 
@@ -98,6 +98,10 @@ app.get('/workouts', (req, res) => {
     }
     res.json(rows);
   });
+});
+
+app.delete('/deletedb', (req, res) => {
+  db.run(`DELETE FROM workouts;`);
 });
 
 app.listen(port, () => {
