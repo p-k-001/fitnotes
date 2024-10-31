@@ -3,6 +3,7 @@ import axios from 'axios';
 
 //TODO: move to config:
 const baseUrl = 'http://localhost:3000';
+const route = '/workouts';
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
@@ -17,7 +18,7 @@ const FileUpload = () => {
     formData.append('file', file);
 
     try {
-      const res = await axios.post(`${baseUrl}/upload`, formData, {
+      const res = await axios.post(`${baseUrl}${route}/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setMessage(res.data.message);

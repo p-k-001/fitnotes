@@ -3,13 +3,14 @@ import axios from 'axios';
 
 //TODO: move to config:
 const baseUrl = 'http://localhost:3000';
+const route = '/workouts';
 
 const DbDelete = () => {
   const [message, setMessage] = useState('');
 
   const deleteDatabase = async () => {
     try {
-      const res = await axios.delete(`${baseUrl}/deletedb`);
+      const res = await axios.delete(`${baseUrl}${route}/deletedb`);
       setMessage(res.data.message);
     } catch (err) {
       console.error('Error deleting db:', err);
