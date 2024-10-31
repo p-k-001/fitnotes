@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-//TODO: move to config:
-const baseUrl = 'http://localhost:3000';
+import { baseApiUrl, endpoints } from '../config';
 
 const WorkoutList = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -10,7 +9,9 @@ const WorkoutList = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/workouts`);
+        const res = await axios.get(
+          `${baseApiUrl}${endpoints.workouts.getAll}`
+        );
         setWorkouts(res.data);
       } catch (err) {
         console.error('Error fetching workouts:', err);

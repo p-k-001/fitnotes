@@ -1,9 +1,6 @@
 const express = require('express');
-
 const cors = require('cors');
-
 const workouts = require('./routes/workouts');
-
 const app = express();
 
 // TODO: move to config:
@@ -19,10 +16,6 @@ app.use(
 );
 
 app.use('/workouts', workouts);
-
-app.get('/', (req, res) => {
-  res.send('Hi.');
-});
 
 app.listen(port, () => {
   console.log(`LISTENING AT ${port}`);

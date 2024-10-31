@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-//TODO: move to config:
-const baseUrl = 'http://localhost:3000';
-const route = '/workouts';
+import { baseApiUrl, endpoints } from '../config';
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
@@ -18,9 +16,13 @@ const FileUpload = () => {
     formData.append('file', file);
 
     try {
-      const res = await axios.post(`${baseUrl}${route}/upload`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      const res = await axios.post(
+        `${baseApiUrl}${endpoints.workouts.upload}`,
+        formData,
+        {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        }
+      );
       setMessage(res.data.message);
     } catch (err) {
       console.error('Error uploading file:', err);
