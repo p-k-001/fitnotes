@@ -1,17 +1,15 @@
-import FileUpload from './Components/FileUpload';
-import WorkoutList from './Components/WorkoutList';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import WorkoutPage from './pages/WorkoutPage';
 import './App.css';
-import DbDelete from './Components/DbDelete';
 
 const App = () => {
   return (
     <>
-      <div>
-        <h1>Gym Workout Tracker</h1>
-        <FileUpload />
-        <WorkoutList />
-        <DbDelete />
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/workouts" element={<WorkoutPage />} />
+      </Routes>
     </>
   );
 };
