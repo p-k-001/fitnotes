@@ -6,18 +6,16 @@ import { baseApiUrl, endpoints } from '../config';
 const WorkoutList = () => {
   const [workouts, setWorkouts] = useState([]);
 
-  useEffect(() => {
-    const fetchWorkouts = async () => {
-      try {
-        const res = await axios.get(
-          `${baseApiUrl}${endpoints.workouts.getAll}`
-        );
-        setWorkouts(res.data);
-      } catch (err) {
-        console.error('Error fetching workouts:', err);
-      }
-    };
+  const fetchWorkouts = async () => {
+    try {
+      const res = await axios.get(`${baseApiUrl}${endpoints.workouts.getAll}`);
+      setWorkouts(res.data);
+    } catch (err) {
+      console.error('Error fetching workouts:', err);
+    }
+  };
 
+  useEffect(() => {
     fetchWorkouts();
   }, []);
 
